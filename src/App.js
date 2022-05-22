@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import ComboBox from './components/ComboBox'
+import CourseCard from './components/CourseCard'
+import FavHeart from './components/CourseCard/FavHeart'
+import Pagination from './components/Pagination'
+import SwrTest from './components/SwrTest'
+import TabsFilter from './components/TabsFilter'
 
-function App() {
+const App = () => {
+
+
+  const [tabsFilters, setTabsFilter] = React.useState([
+    {
+      id: "all",
+      title: "All",
+      selected: true
+    },
+    {
+      id: "myFaves",
+      title: "My Faves",
+      selected: false
+    }
+  ])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+
+      <TabsFilter
+        tabsFilters={tabsFilters}
+        setTabsFilter={setTabsFilter}
+      />
+      <ComboBox />
+      <CourseCard
+        date="2 hourse ago by author"
+        description="Event-driven state management in React using Storeon"
+        faved={true}
+      />
+      <Pagination nbPages={50} />
+      <SwrTest />
+
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
