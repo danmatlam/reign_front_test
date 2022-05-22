@@ -6,14 +6,16 @@ import SelectedView from './SelectedView';
 import SelectOption from './SelectOption';
 
 const Select = ({ options , handleSelect}) => {
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(-10);
 
     const selected = options.find(option => option.selected);
 
- 
+    const toggleOpen =()=>{
+        open === -10 ? setOpen(3) : setOpen(-10);
+    }
     return (
         <View open={open}>
-            <div onClick={()=>setOpen(!open)}>
+            <div onClick={toggleOpen}>
                 {selected ?
                     <SelectedView
                         id={selected.id}
@@ -43,8 +45,6 @@ const Select = ({ options , handleSelect}) => {
                     setOpen={setOpen}
                 />))}
             </div>
-            <JSONTree data={selected} />
-
         </View>
     )
 }
@@ -57,7 +57,7 @@ const View = styled.div`
     position:relative;
 
     .selected_view{
-        display:flex;
+    display:flex;
     align-items:center;
     gap:.5em;
     padding: .45em 1em;
@@ -88,7 +88,12 @@ const View = styled.div`
   .input_options{
     transition: .3s ease;
 
-    ${props => props.open ? 'opacity:1;' : 'opacity:0;'}
+
+    will-change: transform;
+    transition: .3s ease;
+    transform: translateY(${props => props.open && props.open + '%'});
+    display:${props => props.open === -10 ? 'none' : 'block'};
+
     background-color: #fff;
     box-shadow: 0 2px 2px 0 #dad8d8;
     overflow:hidden;

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const SelectOption = ({id,label,selected, handleSelect, setOpen}) => {
   const onChange = (id)=>{
-    setOpen(false);
+    setOpen(-10);
     handleSelect(id)
   }
   return (

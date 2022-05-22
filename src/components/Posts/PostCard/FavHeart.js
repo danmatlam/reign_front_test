@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import IconSwitcher from '../../IconSwitcher';
 
-import {ReactComponent as Heart} from "../IconSwitcher/icons/heart.svg"
-import {ReactComponent as HeartOutlined} from "../IconSwitcher/icons/heart_outline.svg"
+
 
 const FavHeart = ({
   faved
@@ -19,7 +19,7 @@ const FavHeart = ({
 
   return (
     <View pulse={pulse} onClick={handleFavs}>
-      {faved ? <Heart /> : <HeartOutlined />} 
+      {faved ? <IconSwitcher name="heart"/> : <IconSwitcher name="heartOutline" />} 
     </View>
   )
 }

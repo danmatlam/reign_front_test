@@ -8,6 +8,9 @@ import {ReactComponent as ChevronDown} from './icons/chevron_down.svg'
 import {ReactComponent as ChevronUp} from './icons/chevron_up.svg'
 import {ReactComponent as ChevronRight} from './icons/chevron_right.svg'
 import {ReactComponent as ChevronLeft} from './icons/chevron_left.svg'
+import {ReactComponent as Heart} from "./icons/heart.svg"
+import {ReactComponent as HeartOutlined} from "./icons/heart_outline.svg"
+
 export const iconKeys = {
     "react": <ReactIcon/>,
     "angular": <AngularIcon/>,
@@ -18,6 +21,8 @@ export const iconKeys = {
     "chevronRight":<ChevronRight/>,
     "chevronLeft":<ChevronLeft/>,
 
+    "heart":<Heart/>,
+    "heartOutline":<HeartOutlined/>,
 
 
 }

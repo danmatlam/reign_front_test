@@ -30,7 +30,6 @@ const ComboBox = () => {
 
     return (
         <Select
-        
             options={options}
             handleSelect={handleSelect}
         />

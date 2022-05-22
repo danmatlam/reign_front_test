@@ -1,21 +1,26 @@
 import React from 'react'
 import styled from 'styled-components'
-import IconSwitcher from '../IconSwitcher';
+import { timeSince } from '../../../utils';
+import IconSwitcher from '../../IconSwitcher';
 import FavHeart from './FavHeart';
-const CourseCard = ({
-    date,
-    description,
+const PostCard = ({
+    story_title,
+    story_url,
+    author, 
+    created_at,
     faved
 }) => {
+
+    const time_since = timeSince(created_at);
     return (
         <View>
             <div className="card_body">
                 <div className="card_header">
                     <IconSwitcher name="clock" />
-                    <span>{date}</span>
+                    <span>{time_since} ago by {author}</span>
                 </div>
                 <div className="card_content">
-                    <span>{description}</span>
+                    <span>{story_title}</span>
                 </div>
             </div>
             <div className="card_icon">
@@ -25,9 +30,12 @@ const CourseCard = ({
     );
 }
 
-export default CourseCard;
+export default PostCard;
 
 const View = styled.div`
+    flex:1;
+    min-width:40%;
+
     display:flex;
     border-radius:9pt ;
     overflow:hidden;
@@ -52,13 +60,19 @@ const View = styled.div`
         }
         .card_content{
             font-weight: 500;
+            display: block;/* or inline-block */
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            overflow: hidden;
+            max-height: 2.4em;
+            line-height: 1.2em;
         }
     }
     .card_icon{
         display:flex;
         justify-content:center;
         align-items:center;
-        flex:1.5;
+        width:4.2em;
     }
   
   

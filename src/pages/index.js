@@ -9,10 +9,9 @@ import {
   Route,
   useParams
 } from "react-router-dom";
-import { JSONTree } from 'react-json-tree';
 
 
-const App = () => {
+const Index = () => {
 
 
   const [tabsFilters, setTabsFilter] = React.useState([
@@ -29,22 +28,20 @@ const App = () => {
   ]);
 
 
-  const { page = "0" } = useParams();
-
   return (
     <div>
+
       <TabsFilter
         tabsFilters={tabsFilters}
         setTabsFilter={setTabsFilter}
       />
       <ComboBox />
-      <Posts page={page}/>
-
+        <Posts/>
 
     </div>
   )
 }
 
-export default App;
+export default Index;
 
 
