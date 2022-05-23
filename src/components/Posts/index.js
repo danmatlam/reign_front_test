@@ -7,6 +7,7 @@ import Pagination from '../Pagination'
 import PostCard from './PostCard'
 import styled from 'styled-components';
 import { media } from '../../theme/constants'
+import { JSONTree } from 'react-json-tree'
 const Posts = ({
     page,
     tecstack,
@@ -49,6 +50,7 @@ const Posts = ({
             </View>
 
             <Pagination nbPages={data.nbPages} page={page} />
+            <JSONTree data={data}/>
         </div>
 
     )

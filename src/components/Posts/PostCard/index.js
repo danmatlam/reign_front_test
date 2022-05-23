@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import { timeSince } from '../../../utils';
 import IconSwitcher from '../../IconSwitcher';
@@ -17,7 +18,7 @@ const PostCard = ({
 
     return (
         <View >
-            <a className="card_body" href={story_url} target="_blank" rel="noreferrer noopener">
+            <Link className="card_body" to={story_url? story_url :'/404'} target="_blank" rel="noreferrer noopener">
                 <div className="card_header">
                     <IconSwitcher name="clock" />
                     <span>{time_since} ago by {author}</span>
@@ -25,7 +26,7 @@ const PostCard = ({
                 <div className="card_content">
                     <span>{story_title}</span>
                 </div>
-            </a>
+            </Link>
             <div className="card_icon">
                 <FavHeart
                     isFaved={isFaved}
