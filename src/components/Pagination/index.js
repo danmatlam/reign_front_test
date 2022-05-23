@@ -30,12 +30,19 @@ const Pagination = ({
     const moveDown =()=>{
         navigate(`/${GorupedPagesArr[pageGroupIndex-1][0]}`);
     }
+    const moveTo =(page)=>{
+        navigate(`/${page}`);
+    }
+  
   
     return (
         <View>
             <Item value={<IconSwitcher name="chevronLeft"/>} action={moveDown}/>
             {GorupedPagesArr[pageGroupIndex].map(subItem => (
-                <Item value={subItem} current={parseInt(page) === parseInt(subItem)} />))}
+                <Item value={subItem} 
+                current={parseInt(page) === parseInt(subItem)}
+                action={()=>moveTo(subItem)}
+                />))}
             <Item value={<IconSwitcher name="chevronRight"/>} action={moveUp}/>
         </View>
     )

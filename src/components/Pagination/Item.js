@@ -4,7 +4,6 @@ const Item = ({value, current , action}) => {
   return (
     <View 
     onClick={action && action}
-    href={ !action && `/${value}`} rel="noreferrer noopener"
     current={current}>{value}</View>
   )
 }

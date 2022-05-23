@@ -1,6 +1,6 @@
 
 const initialState = {
-    tabFilter:'myFaves',
+    tabFilter:'all',
     favedPosts:[],
     tecstack:'angular',
 }
