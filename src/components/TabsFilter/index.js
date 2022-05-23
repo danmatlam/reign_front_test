@@ -34,4 +34,6 @@ export default TabsFilter;
 
 const View = styled.div`
     display:flex;
+    justify-content:center;
+    padding:2em;
 `

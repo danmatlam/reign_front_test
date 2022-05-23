@@ -32,8 +32,6 @@ const Select = ({ options , handleSelect}) => {
                 }
             </div>
 
-
-
             <div className="input_options" >
                 {options.map(item => (
                 <SelectOption
@@ -54,6 +52,7 @@ export default Select;
 
 const View = styled.div`
     width: 18em;
+    margin-bottom: 3em;
     position:relative;
 
     .selected_view{

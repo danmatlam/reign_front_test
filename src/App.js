@@ -10,6 +10,8 @@ import {
   useParams
 } from "react-router-dom";
 import { JSONTree } from 'react-json-tree';
+import AppBar from './components/AppBar';
+import Layout from './components/Layout';
 
 
 const App = () => {
@@ -32,19 +34,24 @@ const App = () => {
   const { page = "0" } = useParams();
 
   return (
-    <div>
+    <Layout>
+      
+
       <TabsFilter
         tabsFilters={tabsFilters}
         setTabsFilter={setTabsFilter}
       />
+      
       <ComboBox />
+
       <Posts page={page}/>
 
 
-    </div>
+    </Layout>
   )
 }
 
 export default App;
+
 
 

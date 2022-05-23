@@ -22,8 +22,6 @@ export default TabOption;
 const View = styled.div`
     cursor:pointer;
     width:100pt;
-
-    
     span{
         font-size: 16px;
         font-weight: 500;

@@ -27,7 +27,8 @@ const View = styled.div`
     padding: .45em 1em;
     cursor:pointer;
     transition: .3s ease;
-    /* background:red; */
+    border:1pt solid #979797;
+    border-radius:3pt;
 
     .text_view{
       display:flex;
