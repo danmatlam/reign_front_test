@@ -11,12 +11,13 @@ import {
 import { JSONTree } from 'react-json-tree';
 import Layout from './components/Layout';
 import { getSettings, setSettings, tabsCombo, techStackCombo } from './Dao/posts';
+import Pagination from './components/Pagination';
 
 
 const App = () => {
 
 
-  const { page = "0" } = useParams();
+  const { page = "1" } = useParams();
   const settings = getSettings();
 
   /// QUERY FILTER
@@ -73,8 +74,7 @@ const App = () => {
         setFavedPosts={setFavedPosts}
         setSettings={setSettings}
       />
-    <JSONTree data={tabsFilters} />
-    <JSONTree data={settings} />
+
 
     </Layout>
   )

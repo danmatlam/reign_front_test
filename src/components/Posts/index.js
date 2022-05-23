@@ -14,7 +14,7 @@ const Posts = ({
     favedPosts,
     setFavedPosts
 }) => {
-  
+
 
     const postsUrl = `https://hn.algolia.com/api/v1/search_by_date?query=${tecstack}&page=${page}`;
     let { data, error } = useSWR(postsUrl, postFetcher)
@@ -22,31 +22,34 @@ const Posts = ({
     if (!data) return <div>loading...</div>
 
     data = postFilter(data);
-  
+
     const handleFav = (favId) => {
         debugger;
         const found = favedPosts.find(fav => fav === favId);
         const payload = found ?
-        favedPosts.filter(fav => fav !== favId) : [...favedPosts, favId]; 
+            favedPosts.filter(fav => fav !== favId) : [...favedPosts, favId];
         setFavedPosts(payload);
         setSettings('favedPosts', payload);
     }
 
 
     return (
+        <div>
+            <View>
+                {data.hits.map((post, key) => (
+                    <PostCard
+                        key={post.objectID}
+                        story_title={post.story_title}
+                        story_url={post.story_url}
+                        author={post.author}
+                        created_at={post.created_at}
+                        handleFav={() => handleFav(post.objectID)}
+                        isFaved={favedPosts.includes(post.objectID)}
+                    />))}
+            </View>
 
-        <View>
-            {data.hits.map((post, key) => (
-                <PostCard
-                    key={post.objectID}
-                    story_title={post.story_title}
-                    story_url={post.story_url}
-                    author={post.author}
-                    created_at={post.created_at}
-                    handleFav={() => handleFav(post.objectID)}
-                    isFaved={favedPosts.includes(post.objectID)}
-                />))}
-        </View>
+            <Pagination nbPages={data.nbPages} page={page} />
+        </div>
 
     )
 }
@@ -59,4 +62,5 @@ const View = styled.div`
   gap:1.8em 2.4em;
   width:100%;
   flex-flow: wrap;
+  margin-bottom: 2em;
 `
