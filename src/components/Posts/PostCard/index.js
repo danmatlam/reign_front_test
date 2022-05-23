@@ -18,7 +18,7 @@ const PostCard = ({
 
     return (
         <View >
-            <a className="card_body" to={story_url} target="_blank" rel="noreferrer noopener">
+            <a className="card_body" href={story_url} target="_blank" rel="noreferrer noopener">
                 <div className="card_header">
                     <IconSwitcher name="clock" />
                     <span>{time_since} ago by {author}</span>
