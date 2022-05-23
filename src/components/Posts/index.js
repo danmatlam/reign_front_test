@@ -1,12 +1,12 @@
 import React from 'react'
-import { JSONTree } from 'react-json-tree'
 import useSWR from 'swr'
-import { getSettings, postFetcher, postFilter } from '../../Dao/posts'
+import { postFetcher, postFilter } from '../../Dao/posts'
 import Pagination from '../Pagination'
 
 // <-- this is the line that makes the difference       
 import PostCard from './PostCard'
 import styled from 'styled-components';
+import { media } from '../../theme/constants'
 const Posts = ({
     page,
     tecstack,
@@ -58,9 +58,23 @@ export default Posts;
 
 
 const View = styled.div`
-  display: flex;
-  gap:1.8em 2.4em;
-  width:100%;
-  flex-flow: wrap;
-  margin-bottom: 2em;
+    width:100%; 
+    gap:1.8em 2.4em;
+    margin-bottom: 2em;
+    display: grid;
+    @media screen and  (min-width: ${0}px) and (max-width: ${media.xs}px) { 
+        grid-template-columns: repeat(1, 1fr);
+    }
+    @media screen and  (min-width: ${media.xs}px) and (max-width: ${media.sm}px) { 
+        grid-template-columns: repeat(1, 1fr);
+    }
+    @media screen and  (min-width: ${media.sm}px) and (max-width: ${media.md}px) { 
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and  (min-width: ${media.md}px) and (max-width: ${media.lg}px) { 
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and  (min-width: ${media.lg}px) { 
+        grid-template-columns: repeat(3, 1fr);
+    }
 `

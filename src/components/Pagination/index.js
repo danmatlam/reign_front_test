@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { JSONTree } from 'react-json-tree';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 import IconSwitcher from '../IconSwitcher';
@@ -19,31 +18,26 @@ const Pagination = ({
     while (TotalPagesArr.length) GorupedPagesArr.push(TotalPagesArr.splice(0, 9));
 
     let pageGroupIndex= GorupedPagesArr.map(item=>{
-        return item.find(item=>item==page);
+        return item.find(item=>parseInt(item)===parseInt(page));
     });
-    pageGroupIndex = pageGroupIndex.findIndex(item => item!=undefined);
+    pageGroupIndex = pageGroupIndex.findIndex(item => item!==undefined);
     
-    const [groupindex, setGroupindex]= useState(pageGroupIndex); 
     
-
 
     const moveUp =()=>{
-        navigate(`/${GorupedPagesArr[groupindex+1][0]}`);
+        navigate(`/${GorupedPagesArr[pageGroupIndex+1][0]}`);
     }
     const moveDown =()=>{
-        navigate(`/${GorupedPagesArr[groupindex-1][0]}`);
-
+        navigate(`/${GorupedPagesArr[pageGroupIndex-1][0]}`);
     }
   
-
     return (
         <View>
             <Item value={<IconSwitcher name="chevronLeft"/>} action={moveDown}/>
-            {GorupedPagesArr[groupindex].map(subItem => (
-                <Item value={subItem} current={parseInt(page) == subItem} />))}
+            {GorupedPagesArr[pageGroupIndex].map(subItem => (
+                <Item value={subItem} current={parseInt(page) === parseInt(subItem)} />))}
             <Item value={<IconSwitcher name="chevronRight"/>} action={moveUp}/>
         </View>
-
     )
 }
 
@@ -54,5 +48,5 @@ const View = styled.div`
     gap:.5em;
     width:100%;
     justify-content:center;
-    
+
 `

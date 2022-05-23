@@ -3,15 +3,9 @@ import ComboBox from './components/ComboBox'
 import Posts from './components/Posts'
 import TabsFilter from './components/TabsFilter'
 
-import {
-  BrowserRouter as Router,
-
-  useParams
-} from "react-router-dom";
-import { JSONTree } from 'react-json-tree';
+import { useParams } from "react-router-dom";
 import Layout from './components/Layout';
 import { getSettings, setSettings, tabsCombo, techStackCombo } from './Dao/posts';
-import Pagination from './components/Pagination';
 
 
 const App = () => {
@@ -31,7 +25,7 @@ const App = () => {
         return option;
       })
     );
-  }, []);
+  }, [options, settings.tecstack]);
 
   //FAV 
   const [favedPosts, setFavedPosts] = useState(settings.favedPosts);
@@ -47,7 +41,7 @@ const App = () => {
         return tab;
       })
     );
-  }, []);
+  }, [settings.tabFilter, tabsFilters]);
 
 
 

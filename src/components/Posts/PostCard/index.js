@@ -39,8 +39,7 @@ const PostCard = ({
 export default PostCard;
 
 const View = styled.div`
-    flex:1;
-    min-width:40%;
+    width: 100%;
     display:flex;
     border-radius:9pt ;
     overflow:hidden;

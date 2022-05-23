@@ -21,7 +21,6 @@ const ComboBox = ({
             options={options}
             handleSelect={handleSelect}
         />
-
     )
 }
 

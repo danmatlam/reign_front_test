@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
-import { JSONTree } from 'react-json-tree';
 import styled from 'styled-components'
+import { media } from '../../theme/constants';
 import IconSwitcher from '../IconSwitcher';
 import SelectedView from './SelectedView';
 import SelectOption from './SelectOption';
 
-const Select = ({ options , handleSelect}) => {
+const Select = ({ options, handleSelect }) => {
     const [open, setOpen] = useState(-10);
 
     const selected = options.find(option => option.selected);
 
-    const toggleOpen =()=>{
+    const toggleOpen = () => {
         open === -10 ? setOpen(3) : setOpen(-10);
     }
     return (
@@ -34,14 +34,14 @@ const Select = ({ options , handleSelect}) => {
 
             <div className="input_options" >
                 {options.map(item => (
-                <SelectOption
-                    key={item.id}
-                    id={item.id}
-                    label={item.label}
-                    selected={item.selected}
-                    handleSelect={handleSelect}
-                    setOpen={setOpen}
-                />))}
+                    <SelectOption
+                        key={item.id}
+                        id={item.id}
+                        label={item.label}
+                        selected={item.selected}
+                        handleSelect={handleSelect}
+                        setOpen={setOpen}
+                    />))}
             </div>
         </View>
     )
@@ -55,22 +55,36 @@ const View = styled.div`
     margin-bottom: 3em;
     position:relative;
 
+    @media screen and  (min-width: ${0}px) and (max-width: ${media.xs}px) { 
+        width:100%;
+    }
+    @media screen and  (min-width: ${media.xs}px) and (max-width: ${media.sm}px) { 
+       width:100%;
+    }
+    @media screen and  (min-width: ${media.sm}px) and (max-width: ${media.md}px) { 
+        width: 18em;
+    }
+    @media screen and  (min-width: ${media.md}px) and (max-width: ${media.lg}px) { 
+        width: 18em;
+    }
+    @media screen and  (min-width: ${media.lg}px) { 
+        width: 18em;
+    }
     .selected_view{
-    display:flex;
-    align-items:center;
-    gap:.5em;
-    padding: .45em 1em;
-    cursor:pointer;
-    transition: .3s ease;
-    background:#ffffff;
+        display:flex;
+        align-items:center;
+        gap:.5em;
+        padding: .45em 1em;
+        cursor:pointer;
+        transition: .3s ease;
+        background:#ffffff;
     :hover{
         background:#ebeef2;
     }
 
-    //font
-    font-size: 14px;
-    color: #343434;
-    width: 100%;
+        font-size: 14px;
+        color: #343434;
+        width: 100%;
     }
 
   .input_label{
