@@ -4,17 +4,20 @@ import { timeSince } from '../../../utils';
 import IconSwitcher from '../../IconSwitcher';
 import FavHeart from './FavHeart';
 const PostCard = ({
+    key,
     story_title,
     story_url,
-    author, 
+    author,
     created_at,
-    faved
+    isFaved,
+    handleFav
 }) => {
 
     const time_since = timeSince(created_at);
+
     return (
-        <View>
-            <div className="card_body">
+        <View >
+            <a className="card_body" href={story_url} target="_blank" rel="noreferrer noopener">
                 <div className="card_header">
                     <IconSwitcher name="clock" />
                     <span>{time_since} ago by {author}</span>
@@ -22,9 +25,12 @@ const PostCard = ({
                 <div className="card_content">
                     <span>{story_title}</span>
                 </div>
-            </div>
+            </a>
             <div className="card_icon">
-                <FavHeart faved={faved} />
+                <FavHeart
+                    isFaved={isFaved}
+                    onClick={handleFav}
+                />
             </div>
         </View>
     );
@@ -35,21 +41,19 @@ export default PostCard;
 const View = styled.div`
     flex:1;
     min-width:40%;
-
     display:flex;
     border-radius:9pt ;
     overflow:hidden;
     border:2pt solid #979797;
     background:#ebeef2;
-
-
+    height: 6em;
     .card_body{
+        text-decoration: none; 
         color:#6b6b6b;
         display:flex;
         flex-direction:column;
         gap: 0.3em;
         padding:1em;
-        flex:21; 
         background:white;
         .card_header{
             display:flex; 
@@ -64,15 +68,17 @@ const View = styled.div`
             text-overflow: ellipsis;
             word-wrap: break-word;
             overflow: hidden;
-            max-height: 2.4em;
-            line-height: 1.2em;
+          
         }
+        flex:12;
     }
     .card_icon{
         display:flex;
         justify-content:center;
         align-items:center;
-        width:4.2em;
+        cursor:pointer;
+        pointer-events: auto;
+        flex:3;
     }
   
   

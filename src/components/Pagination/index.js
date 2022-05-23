@@ -14,8 +14,8 @@ while(TotalPagesArr.length)  GorupedPagesArr.push(TotalPagesArr.splice(0,9))
   return (
       <>
         {
-            GorupedPagesArr.map(item=>(
-                <View>
+            GorupedPagesArr.map((item,index)=>(
+                <View key={index}>
                     <Item value={<IconSwitcher name="chevronLeft"/>}></Item>
                     {item.map(subItem=>(<Item value={subItem}/>))}
                     <Item value={<IconSwitcher name="chevronRight"/>}></Item>

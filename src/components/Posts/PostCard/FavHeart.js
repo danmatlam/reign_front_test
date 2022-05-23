@@ -5,12 +5,14 @@ import IconSwitcher from '../../IconSwitcher';
 
 
 const FavHeart = ({
-  faved
+  isFaved,
+  onClick
 }) => {
 
   const [pulse,setPulse]= useState(false);
 
   const handleFavs=()=>{
+    onClick()
     setPulse(true);
     setTimeout(() => {
       setPulse(false);
@@ -19,7 +21,7 @@ const FavHeart = ({
 
   return (
     <View pulse={pulse} onClick={handleFavs}>
-      {faved ? <IconSwitcher name="heart"/> : <IconSwitcher name="heartOutline" />} 
+      {isFaved ? <IconSwitcher name="heart"/> : <IconSwitcher name="heartOutline" />} 
     </View>
   )
 }

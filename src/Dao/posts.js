@@ -1,3 +1,31 @@
+
+const initialState = {
+    tabFilter:'myFaves',
+    favedPosts:[],
+    tecstack:'angular',
+}
+/// INITIAL SETTINGS
+
+export const getSettings = () => {
+    const settings =  localStorage.getItem("settings");
+    if(settings===null){
+        localStorage.setItem('settings', JSON.stringify(initialState));
+        return JSON.parse(localStorage.getItem("settings"));
+    }else{
+        return JSON.parse(settings);
+    }
+};
+
+export const setSettings = (slice,value)=>{
+    const settings =getSettings();
+    settings[slice] = value;
+    localStorage.setItem('settings', JSON.stringify(settings));
+}
+
+
+
+
+//UTILS
 export const postFetcher = (url) => {
     try {
         return fetch(url).then((res) => res.json());;
@@ -9,7 +37,6 @@ export const postFetcher = (url) => {
 };
 
 export const postFilter = (data)=>{
-    debugger;
     let hits = data.hits;
     const sizeIni = hits.length;
     hits = hits.filter(item=>(
@@ -20,6 +47,12 @@ export const postFilter = (data)=>{
     ));
     const sizeEnd = hits.length;
 
+    const {tabFilter, favedPosts}=getSettings();
+
+    if(tabFilter==="myFaves"){
+        hits = hits.filter(item=>(favedPosts.includes(item.objectID)));
+    }
+
     return {
         ...data,
         hits,
@@ -27,5 +60,29 @@ export const postFilter = (data)=>{
         sizeEnd
     }
 
-}
+};
+
+
+export const techStackCombo =    [
+    {
+        id: "angular",
+        label: 'Angular',
+        selected: false
+    },
+    {
+        id: "react",
+        label: 'React',
+        selected: false
+    },
+    {
+        id: "vue",
+        label: 'Vue',
+        selected: false
+    }
+];
+export const tabsCombo = [
+    {id: "all",title: "All",selected: false},
+    {id: "myFaves",title: "My Faves", selected: false }
+  ];
+
 
