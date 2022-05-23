@@ -18,7 +18,7 @@ const PostCard = ({
 
     return (
         <View >
-            <Link className="card_body" to={story_url? story_url :'/404'} target="_blank" rel="noreferrer noopener">
+            <a className="card_body" to={story_url} target="_blank" rel="noreferrer noopener">
                 <div className="card_header">
                     <IconSwitcher name="clock" />
                     <span>{time_since} ago by {author}</span>
@@ -27,7 +27,7 @@ const PostCard = ({
 
                     <span>{story_title}</span>
                 </div>
-            </Link>
+            </a>
             <div className="card_icon">
                 <FavHeart
                     isFaved={isFaved}
