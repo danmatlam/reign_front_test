@@ -47,7 +47,16 @@ const View = styled.div`
     border:2pt solid #979797;
     background:#ebeef2;
     height: 6em;
+
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);   
+    cursor:pointer;
+    :hover {
+        .card_body{
+            opacity:.6;   
+        }
+    }  
     .card_body{
+       
         text-decoration: none; 
         color:#6b6b6b;
         display:flex;
