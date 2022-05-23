@@ -24,6 +24,7 @@ const PostCard = ({
                     <span>{time_since} ago by {author}</span>
                 </div>
                 <div className="card_content">
+
                     <span>{story_title}</span>
                 </div>
             </Link>

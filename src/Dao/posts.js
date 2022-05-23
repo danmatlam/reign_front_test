@@ -40,10 +40,10 @@ export const postFilter = (data)=>{
     let hits = data.hits;
     const sizeIni = hits.length;
     hits = hits.filter(item=>(
-        item.story_title ===null ||
-        item.story_url === null ||
-        item.author === null ||
-        item.created_at === null
+        item.story_url !== null 
+        ||item.story_title !==null
+        ||item.created_at !==null
+
     ));
     const sizeEnd = hits.length;
 
